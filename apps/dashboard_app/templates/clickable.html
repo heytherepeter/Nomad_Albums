@@ -25,12 +25,13 @@
 	<div id="content">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-
 				<button type="button" id="sidebarCollapse" class="btn btn-info">
 					<i class="fas fa-align-left"></i>
-					<span>Toggle Sidebar</span>
+					<span></span>
 				</button>
-
+				<h1>Nomad Albums</h1>
+				<a href="/album/add">Add Album</a>
+				<a href="/picture/add">Add picture</a>
 			</div>
 		</nav>
 	</div>
@@ -43,22 +44,19 @@
 
 			<ul class="list-unstyled components text-center">
 				<p>Select an album to see the pictures locations</p>
-				<li class="active">
-					<a href="#homeSubmenu">Main</a>
+				<li>
+					<a class="album_title"  href="{% static 'img/japan.png' %}">Japan</a>
 				</li>
 				<li>
-					<a href="#">Japan</a>
+					<a class="album_title"  href="{% static 'img/australia.png' %}">Scuba Diving</a>
 				</li>
 				<li>
-					<a href="#">Scuba Diving</a>
-				</li>
-				<li>
-					<a href="#">Bali</a>
+					<a class="album_title"  href="{% static 'img/bali.png' %}">Bali</a>
 				</li>
 			</ul>
 		</nav>
-		<div style="display: inline-block;">
-			<div id="googleMap" style="height:100vh; width: 900px; "></div>
+		<div id="map_container" style="display: inline-block; background-color: blue; width: 100%;">
+			<div id="googleMap" style="height:90vh; width: inherit; "></div>
 			<script>
 			function myMap() {
 			var mapProp= {
@@ -84,9 +82,14 @@
 	$(document).ready(function () {
 
 		$('#sidebarCollapse').on('click', function () {
+			console.log('sidebar closed')
 			$('#sidebar').toggleClass('active');
 		});
-
+		$('.album_title').on('click', function (e) {
+			e.preventDefault();
+			console.log('bali pressed');
+			$('#googleMap').html('<img src="' + this.href + '" style="height: 100vh; width: inherit;" />');
+		});
 	});
 	</script>
 </body>

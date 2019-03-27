@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- bootstrap links -->
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<!-- end of boostrap links -->
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="display-3">Welcome to Handy Helper</h1>
+			<div class="text-center">
+				{% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+						<li style="color: red; list-style-type: none;">{{ message }}</li>
+						{% endfor %}
+				</ul>
+				{% endif %}
+			</div>
+			<div class="row">
+						<!-- Register coloumn -->
+				<div class="col-md-8">
+					<h1 class="text-center">Register</h1>
+					<form class="form" id="form_reg" action="#" method="post">
+						{% csrf_token %}
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label" for="form_reg_first_name">First Name:</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" name="form_reg_first_name" value="">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label" for="form_reg_last_name">Last Name:</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" name="form_reg_last_name" value="">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label" for="form_reg_email">Email:</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" name="form_reg_email" value="">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label" for="form_reg_birthday">Birthday:</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="date" name="form_reg_birthday" placeholder="YYYY-MM-DD" value="">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label" for="form_reg_password">Password:</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="password" name="form_reg_password" value="">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label" for="form_reg_pass_confirm">Confirm PW:</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="password" name="form_reg_pass_confirm" value="">
+							</div>
+						</div>
+						<div class="text-center">
+							<button class="btn btn-outline-primary" type="submit" name="button">Register</button>
+						</div>
+					</form>
+				</div>
+						<!-- login coloumn -->
+				<div class="col-md-4">
+					<h1 class="text-center">login</h1>
+					<form class="form" id="form_login" action="/dashboard" method="post">
+						{% csrf_token %}
+						<input class="form-control mb-3" type="text" name="form_login_email" placeholder="Email" value="">
+						<input class="form-control mb-3" type="password" name="form_login_password" placeholder="Password" value="">
+						<div class="text-center">
+							<button class="btn btn-outline-primary" type="submit" name="button">Login</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
